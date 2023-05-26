@@ -1,0 +1,40 @@
+name: Install EAT and test
+on: push
+jobs:
+   main:
+      strategy:
+        fail-fast: false
+        matrix:
+          os: [ubuntu-latest, macos-latest, windows-latest]
+          shell: bash -el {0}
+          include:
+          - os: windows-latest
+            shell: cmd /C call {0}
+      name: ${{ matrix.os }}
+      runs-on: ${{ matrix.os }}
+      defaults:
+        run:
+          shell: ${{ matrix.shell }}
+      steps:
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          python-version: 3.9
+      - name: Install EAT
+        run: |
+          conda create -n eat -c bolding-bruggeman -c conda-forge eatpy
+      - name: Run North Sea stand-alone
+        run: |
+          conda activate eat
+          cd north_sea_pisces
+          eat-gotm
+      - name: Generate ensemble
+        run: |
+          conda activate eat
+          cd north_sea_pisces
+          generate_ensemble_phys_bgc.py
+      - name: Assimilate
+        run: |
+          conda activate eat
+          cd north_sea_pisces
+          mpiexec -n 1 python assimilate_sst_chl.py : -n 20 eat-gotm --separate_gotm_yaml
