@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import numpy as np
 import eatpy
 N = 20    # ensemble size
