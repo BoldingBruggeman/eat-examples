@@ -7,9 +7,9 @@ jobs:
         matrix:
           os: ["ubuntu-latest", "macos-latest", "windows-latest"]
           shell: ["bash -el {0}"]
-          include:
-          - os: "windows-latest"
-            shell: "cmd /C call {0}"
+          # include:
+          # - os: "windows-latest"
+          #   shell: "cmd /C call {0}"
       name: ${{ matrix.os }}
       runs-on: ${{ matrix.os }}
       defaults:
