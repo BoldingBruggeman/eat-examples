@@ -243,6 +243,8 @@ fabm:                                                     # Framework for Aquati
       surface_drag: false                                 # surface drag [default=false]
    repair_state: true                                     # clip state to minimum/maximum boundaries [default=false]
    input:
+      ice_area_fraction: 0
+      mole_fraction_of_carbon_dioxide_in_air: 400.
       no3/c:                                              # concentration in carbon units [mol C L-1]
          method: file                                     # method [constant, file=from file; default=constant]
          constant_value: 0.0                              # value to use throughout the simulation [mol C L-1; default=0.0]
