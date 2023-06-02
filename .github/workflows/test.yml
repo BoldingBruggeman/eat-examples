@@ -22,7 +22,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install EAT
         run: |
-          conda create -n eat -c bolding-bruggeman -c conda-forge eatpy
+          conda create -n eat -c bolding-bruggeman -c conda-forge -y -q eatpy
+          conda install -n eat -c conda-forge -y -q jupyterlab ipympl netcdf4
       - name: Run North Sea stand-alone
         run: |
           conda activate eat
