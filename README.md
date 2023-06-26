@@ -4,6 +4,8 @@ These instructions describe how to install EAT on Linux, Mac and Windows.
 
 The commands below should be run in a terminal. On Windows, this called a "Command Prompt" which you can open by clicking Start and typing `cmd`. On [a Mac with an M1 processor](https://en.wikipedia.org/wiki/Apple_M1#Products_that_use_the_Apple_M1_series), you will need to [open the terminal with Rosetta](https://www.byran.tech/html/how-to-make-a-rosetta-2-emulated-x86-terminal-on-arm-apple-silicon-chips.html).
 
+If you experience problems installing EAT, please [report these as an issue](https://github.com/BoldingBruggeman/eat-examples/issues) (GitHub account required) or send an email to jorn@bolding-bruggeman.com.
+
 ## Anaconda
 
 Check if you have [Anaconda](https://new.anaconda.com/products/distribution) by executing `conda --version`
