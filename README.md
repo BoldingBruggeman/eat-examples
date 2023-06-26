@@ -36,7 +36,7 @@ conda install -n eat -c conda-forge jupyterlab ipympl netcdf4
 
 No errors should occur executing these commands​:
 
-```bash
+```
 conda activate eat​
 python -c "import eatpy, matplotlib, netCDF4"​
 jupyter lab --version
