@@ -36,11 +36,10 @@ conda install -n eat -c conda-forge jupyterlab ipympl netcdf4
 
 No errors should occur executing these commands​:
 
-```
-conda activate eat​
+<pre><code>conda activate eat​
 python -c "import eatpy, matplotlib, netCDF4"​
 jupyter lab --version
 eat-gotm --version
-```
+</code></pre>
 
 The final command will report `model(no filter program present)`, among others - that is expected and not an error.
