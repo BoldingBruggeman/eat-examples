@@ -40,7 +40,7 @@ No errors should occur executing these commands​:
 
 ```
 conda activate eat
-python -c "import eatpy, matplotlib, netCDF4"​
+python -c "import eatpy, matplotlib, netCDF4"
 jupyter lab --version
 eat-gotm --version
 ```
