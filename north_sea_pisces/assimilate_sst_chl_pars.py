@@ -22,6 +22,7 @@ experiment.add_plugin(
 )
 
 # If you comment out the two lines below, you run the ensemble only without assimilation
+# Note: if you are running ERGOM, replace total_chlorophyll_calculator_result with msi_ergom1_tot_chla
 experiment.add_observations("temp[-1]", "cci_sst.dat")
 experiment.add_observations("total_chlorophyll_calculator_result[-1]", "cci_chl.dat")
 
