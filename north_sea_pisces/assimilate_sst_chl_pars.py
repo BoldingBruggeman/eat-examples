@@ -1,5 +1,10 @@
 import eatpy
 
+# Notes:
+# * You can estimate any biogeochemical parameter included in fabm.yaml.
+#   Check this file to see possible options. The example below is for the PISCES model.
+# * If you are running ERGOM, replace total_chlorophyll_calculator_result with msi_ergom1_tot_chla
+
 experiment = eatpy.models.GOTM(
     diagnostics_in_state=["total_chlorophyll_calculator_result"],
     fabm_parameters_in_state=["instances/phy/parameters/mumax0", "instances/dia/parameters/mumax0"]
@@ -22,7 +27,6 @@ experiment.add_plugin(
 )
 
 # If you comment out the two lines below, you run the ensemble only without assimilation
-# Note: if you are running ERGOM, replace total_chlorophyll_calculator_result with msi_ergom1_tot_chla
 experiment.add_observations("temp[-1]", "cci_sst.dat")
 experiment.add_observations("total_chlorophyll_calculator_result[-1]", "cci_chl.dat")
 
