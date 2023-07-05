@@ -48,3 +48,6 @@ eat-gotm --version
 ```
 
 The final command will report `model(no filter program present)`, among others - that is expected and not an error.
+
+On Windows, if you get an alert stating that "Windows Defender Firewall has blocked some features of this app", you can click "Cancel".
+This will not affect the functionality of EAT.
