@@ -2,7 +2,7 @@
 
 These instructions describe how to install EAT on Linux, Mac and Windows.
 
-The commands below should be run in a terminal. On Windows, you should use the "Anaconda Prompt".
+The commands below should be run in a terminal. On Windows, open a terminal by choosing "Anaconda prompt" in the start menu (instructions on how to install this below).
 
 If you experience problems installing EAT, please [report these as an issue](https://github.com/BoldingBruggeman/eat-examples/issues) (GitHub account required) or send an email to jorn@bolding-bruggeman.com.
 
