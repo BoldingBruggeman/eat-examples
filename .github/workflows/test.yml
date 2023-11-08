@@ -36,6 +36,8 @@ jobs:
           cd north_sea_pisces
           ./generate_ensemble_phys_bgc.py
       - name: Assimilate
+        env:
+          OMPI_MCA_rmaps_base_oversubscribe: 1
         run: |
           conda activate eat
           cd north_sea_pisces
