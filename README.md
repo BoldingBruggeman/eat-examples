@@ -23,7 +23,7 @@ Check if you have [Anaconda](https://new.anaconda.com/products/distribution) by 
 Create a new conda environment with EAT​:
    
 ```
-conda create -n eat -c bolding-bruggeman -c conda-forge eatpy
+conda create -n eat -c bolding-bruggeman -c conda-forge -y eatpy
 ```
 
 Note: some administrators disable the use of custom conda channels (the `-c bolding-bruggeman` above). If the above command fails for this reason, follow [manual installation instructions](https://github.com/BoldingBruggeman/eat/wiki#building-and-installing-manually), with one change: use the `seamless` branch of EAT by cloning the code with `git clone --recursive -b seamless https://github.com/BoldingBruggeman/eat.git`.
@@ -33,7 +33,7 @@ Note: some administrators disable the use of custom conda channels (the `-c bold
 Add packages that we will use for analysis and visualization​:
 
 ```
-conda install -n eat -c conda-forge jupyterlab ipympl netcdf4
+conda install -n eat -c conda-forge -y jupyterlab ipympl netcdf4
 ```
 
 ## Verify everything installed correctly
@@ -51,5 +51,7 @@ Any warnings about "unable to open mca_btl_openib" can be ignored.
 
 The final command will report `model(no filter program present)`, among others - that is expected and not an error.
 
-On Windows, if you get an alert stating that "Windows Defender Firewall has blocked some features of this app", you can click "Cancel".
+On Windows:
+* if you get an alert stating that "Windows Defender Firewall has blocked some features of this app", you can click "Cancel".
 This will not affect the functionality of EAT.
+* if you receive a warning stating that "You seem to have a system wide installation of MSMPI", remove MPI from your conda environment with `conda remove --force -y msmpi`.
