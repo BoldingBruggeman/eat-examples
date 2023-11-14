@@ -14,7 +14,7 @@ Check if you have [Anaconda](https://new.anaconda.com/products/distribution) by 
 
   Installing miniconda does not require root/administrator privileges. Allow the installer to initialize the conda environment, unless you know you want to control this manually.​
 
-  After installing conda, you will have to close and reopen your terminal to activate conda support. On Windows, you specifically need to open the newly installed "Anaconda Prompt".
+  After installing conda, you will have to close and reopen your terminal to activate conda support. On Windows, you need to open the newly installed "Anaconda Prompt".
 
 * If `conda --version` succeeds, great. Now execute `conda update conda` to ensure your conda is up to date. If this fails because you do not have sufficient permissions (common on HPC systems with a centralized conda installation), we recommend you install Miniconda instead, for instance in your homedir (see the previous item).
 
@@ -47,11 +47,55 @@ jupyter lab --version
 eat-gotm --version
 ```
 
-Any warnings about "unable to open mca_btl_openib" can be ignored.
+Troubleshooting:
+* *unable to open mca_btl_openib*. This is a warning that can be ignored. It indicates a lack of support for high-speed interconnects, which we do not need because we will run on a single workstation. Optionally, you can install this support just to remove the warning: `conda install -c conda-forge ucx libnl`.
+* *model(no filter program present)*. This is expected output for the `eat-gotm` command.
+* On Windows, if you get a firewall alert such as  *Windows Defender Firewall has blocked some features of this app*, you can click "Cancel". This will not affect the functionality of EAT.
+* *You seem to have a system wide installation of MSMPI* (Windows-only). This can cause problems. Remove MPI from your conda environment with `conda remove --force -y msmpi`.
 
-The final command will report `model(no filter program present)`, among others - that is expected and not an error.
+## Download and extract the example setup
 
-On Windows:
-* if you get an alert stating that "Windows Defender Firewall has blocked some features of this app", you can click "Cancel".
-This will not affect the functionality of EAT.
-* if you receive a warning stating that "You seem to have a system wide installation of MSMPI", remove MPI from your conda environment with `conda remove --force -y msmpi`.
+First download [the zip file with an example setup, run scripts, and analysis notebooks](https://github.com/BoldingBruggeman/eat-examples/archive/refs/heads/main.zip).
+
+Now extract this file to some location on your computer. On Windows, open the zip file and choose "Extract all". On Linux and Mac, execute `unzip <ZIPFILE>` in a terminal. Remember the location you extracted to, as we will revisit it during the workshop.
+
+## Reference
+
+The below commands are for use during the workshop itself.
+
+* Load the EAT environment whenever you open a new terminal​
+  ```
+  conda activate eat​
+  ```
+
+* Commands should be executed from the directory with your GOTM setup (for instance, the one you downloaded from iGOTM)
+  ```
+  cd <SETUPDIR>​
+  ```
+* To run a stand-alone simulation (no ensemble, no data assimilation)​:
+  ```
+  eat-gotm​
+  ```
+* To generate an ensemble:
+  ```
+  python <GENERATE_SCRIPT>​
+  ```
+  In the example, `<GENERATE_SCRIPT>` would be one of `generate_ensemble*.py`.
+
+* To run a data assimilation experiment:
+  ```
+  mpiexec -n 1 python <RUN_SCRIPT> : -n <NENS> eat-gotm [--separate_gotm_yaml] [--separate_restart_file]​
+  ```    
+  In the downloaded example, `<RUN_SCRIPT>` would be one of `assimilate*.py`.
+
+  `<NENS>` is the number of ensemble members. This should match the number in your ensemble generation script (`<GENERATE_SCRIPT>​` above).
+
+  At least one of `--separate_gotm_yaml` and `--separate_restart_file` should be specified to ensure that ensemble members differ from each other.
+
+  If conda installed EAT with OpenMPI instead of MPICH (Linux and Mac only, you can check with `conda list mpi`), you will need to add `--oversubscribe` to be able to use large ensemble sizes (&ge; your number of cores).
+
+* Analyze results:​
+  ```
+  jupyter lab​
+  ```
+  Allow the browser to open, then click one of the Jupyter notebooks (`*.ipynb`).​
