@@ -55,9 +55,26 @@ Troubleshooting:
 
 ## Download and extract the example setup
 
+*This could be done during the workshop, provided you have a reliable internet connection.*
+
 First download [the zip file with an example setup, run scripts, and analysis notebooks](https://github.com/BoldingBruggeman/eat-examples/archive/refs/heads/main.zip).
 
 Now extract this file to some location on your computer. On Windows, open the zip file and choose "Extract all". On Linux and Mac, execute `unzip <ZIPFILE>` in a terminal. Remember the location you extracted to, as we will revisit it during the workshop.
+
+## Configure and download your own setup
+
+*This could be done during the workshop, provided you have a reliable internet connection.*
+
+* Visit [the iGOTM web site](https://igotm.bolding-bruggeman.com/?key=TVJKK65Z)
+* Click a location to simulate
+* Click the "Configure simulation" button (<img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/gear.svg" width="15" height="15">)
+* Customize:
+  - the time period (recommended: 3 years)
+  - biogeochemistry (recommended: PISCES, ERSEM, BFM or ECOSMO)
+  - include remotely sensed surface temperature and chlorophyll
+* Click the "Download GOTM setup" button (<img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/download.svg" width="15" height="15">)
+* Extract the zip file to some location on your computer (remember this location, as we will need it during the workshop)
+
 
 ## Reference
 
